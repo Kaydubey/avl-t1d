@@ -291,7 +291,21 @@ with tab1:
             rm1, rm2 = st.columns(2)
             rm1.metric("Recommended Insulin", f"{res['dose']} Units")
             rm2.metric("Projected Glucose", f"{res['outcome']} mg/dL")
-            st.markdown(f'<div class="ai-decision-box"><div style="font-size: 1.1rem; font-weight: 700;">Final Clinical Plan</div><div style="font-size: 1.4rem; font-weight: 800;">{res['plan']}</div></div>', unsafe_allow_html=True)
+            plan = res["plan"]
+            st.markdown(
+                f"""
+                <div class="ai-decision-box">
+                   <div style="font-size: 1.1rem; font-weight: 700;">
+                Final Clinical Plan
+                 </div>
+                 <div style="font-size: 1.4rem; font-weight: 800;">
+                   {plan}
+                 </div>
+                 </div>
+                """, unsafe_allow_html=True
+            )
+            
+            
             st.markdown('</div>', unsafe_allow_html=True)
             
             st.write("")
